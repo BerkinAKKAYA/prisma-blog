@@ -8,7 +8,6 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import { MoreVert, Logout, Login, TableRows, Create } from '@mui/icons-material';
 import { useSession, signIn, signOut } from "next-auth/react"
@@ -126,17 +125,16 @@ export default function Header() {
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static">
 				<Toolbar>
-					<IconButton size="large" edge="start" color="inherit" sx={{ mr: 2 }}>
-						<MenuIcon />
-					</IconButton>
 					<Typography
 						variant="h6"
 						noWrap
 						component="div"
-						sx={{ display: { xs: 'none', sm: 'block' } }}
+						sx={{ display: { xs: 'none', sm: 'block' }, cursor: 'pointer' }}
+						onClick={() => router.push('/')}
 					>
-						Prisma Blog
+						<b>Prisma Blog</b>
 					</Typography>
+
 					<Search>
 						<SearchIconWrapper>
 							<SearchIcon />
