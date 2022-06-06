@@ -3,9 +3,10 @@
 ## TODO
 - [x] Create Next App with Jest
 - [x] Create Prisma DB with SQLite
-- [ ] Implement Next Auth
-- [ ] Add "Create Blog Post" page
-- [ ] Add a styled "Blog Posts" page
+- [x] Implement Next Auth
+- [x] Add "Create Blog Post" page
 - [ ] Write Tests for Core Logical Components using RTL and Jest
 - [ ] Deploy on Railway
 - [ ] Add Pagination
+- [ ] Add Post Search
+- [ ] Add Edit Pages
