@@ -8,3 +8,4 @@
 - [ ] Add a styled "Blog Posts" page
 - [ ] Write Tests for Core Logical Components using RTL and Jest
 - [ ] Deploy on Railway
+- [ ] Add Pagination

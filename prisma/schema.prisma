@@ -11,15 +11,8 @@ datasource db {
 }
 
 model Post {
-  id       Int    @id @default(autoincrement())
-  author   Author @relation(fields: [authorId], references: [id])
-  authorId Int
-  title    String
-  content  String
-}
-
-model Author {
-  id       Int    @id @default(autoincrement())
-  fullname String
-  posts    Post[]
+  id         Int    @id @default(autoincrement())
+  authorMail String
+  title      String
+  content    String
 }

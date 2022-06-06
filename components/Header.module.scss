@@ -6,4 +6,24 @@
 	margin: 20px;
 	margin-top: 0;
 	border-bottom: 2px dashed #aaa;
+	gap: 30px;
+}
+
+@media (max-width: 800px) {
+	.header {
+		justify-content: center;
+		flex-direction: column;
+		gap: 10px;
+	}
+}
+
+.buttons {
+	display: flex;
+	gap: 5px;
+}
+
+.heading {
+	margin-top: 30px;
+	margin-bottom: 0;
+	text-align: center;
 }
