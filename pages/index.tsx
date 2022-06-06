@@ -1,8 +1,16 @@
 import Head from 'next/head'
+import { styled } from '@mui/material/styles';
 import { PrismaClient, Post } from '@prisma/client'
 import Header from '../components/Header';
+import { useSession } from 'next-auth/react';
 
 const prisma = new PrismaClient();
+
+const Welcome = styled('p')(({ theme }) => ({
+  textAlign: "center",
+  fontSize: "1.6em",
+  margin: "48px 0",
+}));
 
 export async function getServerSideProps() {
   const posts: Post[] = await prisma.post.findMany();
@@ -11,6 +19,7 @@ export async function getServerSideProps() {
 
 export default function Home(props: { posts: Post[] }) {
   const { posts } = props;
+  const user = useSession()?.data?.user || null;
 
   return (
     <div>
@@ -20,6 +29,8 @@ export default function Home(props: { posts: Post[] }) {
       </Head>
 
       <Header />
+
+      {user ? <Welcome>{`Welcome back, ${user.name}!`}</Welcome> : ''}
 
       <div>
         {
