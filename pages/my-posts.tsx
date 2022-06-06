@@ -18,7 +18,7 @@ export default function Home(props: { posts: Post[] }) {
 	return (
 		<div>
 			<Head>
-				<title>Blog</title>
+				<title>Prisma Blog - My Posts</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 

@@ -15,7 +15,7 @@ export default function Home(props: { posts: Post[] }) {
   return (
     <div>
       <Head>
-        <title>Blog</title>
+        <title>Prisma Blog by Berkin AKKAYA</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

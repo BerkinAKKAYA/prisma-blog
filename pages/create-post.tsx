@@ -52,7 +52,7 @@ export default function Home() {
 	return (
 		<div>
 			<Head>
-				<title>Blog</title>
+				<title>Prisma Blog - Create Post</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
