@@ -16,7 +16,6 @@ const ruleErrors = {
 	titleError: `Title must be at least ${minLengths.title} characters long.`,
 	contentError: `Content must be at least ${minLengths.content} characters long.`
 }
-
 enum InputType { "Title", "Content" }
 
 export default function Home(props) {
@@ -111,7 +110,7 @@ export default function Home(props) {
 					<TextField
 						label="Post Content"
 						multiline
-						rows={4}
+						rows={8}
 						variant="outlined"
 						onChange={el => OnInputChange(el, InputType.Content)}
 						error={!!contentError}
