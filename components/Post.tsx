@@ -4,7 +4,7 @@ import { Card, CardActions, CardContent, Button, Typography } from '@mui/materia
 import { ChevronRight } from '@mui/icons-material';
 import Link from 'next/link';
 
-interface Props {
+interface Post {
 	postInfo: PostType
 }
 
