@@ -33,3 +33,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# prisma
+/prisma/dev.db
+/prisma/migrations/
