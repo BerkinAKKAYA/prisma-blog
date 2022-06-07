@@ -12,3 +12,4 @@
 - [ ] Add "Post Detail" Page
 - [ ] Add "Edit Post" Page
 - [ ] Add Auth Middlewares (Edit Post, My Posts, Create Post)
+- [ ] Add Null Checks For Posts (Edit Post, Post Detail)
