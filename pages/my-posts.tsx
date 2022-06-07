@@ -4,7 +4,6 @@ import { InferGetServerSidePropsType } from "next";
 import { Paper, Stack } from '@mui/material';
 import { Key } from 'react';
 import Head from 'next/head'
-import Header from '../components/Header';
 import Post from '@/components/Post';
 import PageHeader from '@/components/PageHeader';
 
@@ -26,8 +25,6 @@ export default function Home(props: InferGetServerSidePropsType<typeof getServer
 				<title>Prisma Blog - My Posts</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-
-			<Header />
 
 			<PageHeader>My Posts</PageHeader>
 

@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Header from "@/components/Header";
 import Link from "next/link";
 import PostForm from "@/components/PostForm";
 import { Button, Paper } from "@mui/material";
@@ -35,8 +34,6 @@ export default function (props: InferGetServerSidePropsType<typeof getServerSide
 				<title>{post ? post.title.slice(0, 20) : 'Not Found'} | Edit | Prisma Blog</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-
-			<Header />
 
 			<div style={{ textAlign: "center", marginTop: 32 }}>
 				<Link href={"/posts/" + post?.id}>

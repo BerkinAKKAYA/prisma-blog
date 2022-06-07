@@ -3,7 +3,6 @@ import { Post as PostType, PrismaClient } from "@prisma/client";
 import { Button, Paper } from "@mui/material";
 import { ChevronLeft, Edit as EditIcon } from "@mui/icons-material";
 import Head from "next/head";
-import Header from "@/components/Header";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 
@@ -32,8 +31,6 @@ export default function (props: InferGetServerSidePropsType<typeof getServerSide
 				<title>{post ? post.title.slice(0, 20) : 'Not Found'} | Prisma Blog</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-
-			<Header />
 
 			{
 				post ?

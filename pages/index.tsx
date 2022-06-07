@@ -1,6 +1,5 @@
 import Head from 'next/head'
 import { PrismaClient, Post as PostType } from '@prisma/client'
-import Header from '../components/Header';
 import { useSession } from 'next-auth/react';
 import Post from '@/components/Post';
 import { InferGetServerSidePropsType } from "next";
@@ -25,8 +24,6 @@ export default function Home(props: InferGetServerSidePropsType<typeof getServer
         <title>Prisma Blog by Berkin AKKAYA</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Header />
 
       {
         user
