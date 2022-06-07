@@ -4,7 +4,7 @@ import Header from '../components/Header';
 import { useSession } from 'next-auth/react';
 import Post from '@/components/Post';
 import { InferGetServerSidePropsType } from "next";
-import { Stack } from '@mui/material';
+import { Paper, Stack } from '@mui/material';
 import { Key } from 'react';
 import PageHeader from '@/components/PageHeader';
 
@@ -34,15 +34,17 @@ export default function Home(props: InferGetServerSidePropsType<typeof getServer
           : <PageHeader>Welcome to Prisma Blog!</PageHeader>
       }
 
-      <Stack spacing={3} className="post-holder">
-        {
-          posts.length === 0
-            ? <p style={{ textAlign: "center" }}>Nobody posted anything. Yet...</p>
-            : posts.map((post: PostType, i: Key) => (
-              <Post postInfo={post} key={i} />
-            ))
-        }
-      </Stack>
+      <main className="main">
+        <Stack spacing={3} className="post-holder">
+          {
+            posts.length === 0
+              ? <p style={{ textAlign: "center" }}>Nobody posted anything. Yet...</p>
+              : posts.map((post: PostType, i: Key) => (
+                <Post postInfo={post} key={i} />
+              ))
+          }
+        </Stack>
+      </main>
     </div>
   )
 }

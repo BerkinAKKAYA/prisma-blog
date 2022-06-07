@@ -1,8 +1,8 @@
 import { Post as PostType } from '@prisma/client'
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/router';
 import { Card, CardActions, CardContent, Button, Typography } from '@mui/material';
-import { ArrowRight, ChevronRight } from '@mui/icons-material';
+import { ChevronRight } from '@mui/icons-material';
+import Link from 'next/link';
 
 interface Props {
 	postInfo: PostType
@@ -10,9 +10,7 @@ interface Props {
 
 export default function Post(props: { postInfo: PostType }) {
 	const user = useSession()?.data?.user || null;
-
 	const canEdit = props.postInfo.authorMail === user?.email;
-
 	const wordsOfContent = props.postInfo.content.split(" ");
 
 	return (
@@ -29,15 +27,15 @@ export default function Post(props: { postInfo: PostType }) {
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<a href={'/posts/detail/' + props.postInfo.id}>
+				<Link href={'/posts/' + props.postInfo.id}>
 					<Button variant="outlined" endIcon={<ChevronRight />} >Read More</Button>
-				</a>
+				</Link>
 
 				{
 					canEdit && (
-						<a href={'/posts/edit/' + props.postInfo.id}>
+						<Link href={'/posts/edit/' + props.postInfo.id}>
 							<Button size="small">Edit</Button>
-						</a>
+						</Link>
 					)
 				}
 			</CardActions>

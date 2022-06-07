@@ -48,6 +48,7 @@ export default function Home(props) {
 		if (error) { return; }
 
 		const formData: Prisma.PostCreateInput = {
+			authorName: user?.name || "",
 			authorMail: user?.email || "",
 			title,
 			content
@@ -94,8 +95,8 @@ export default function Home(props) {
 
 			<Header />
 
-			<Paper style={{ maxWidth: "600px", margin: "50px auto", padding: 20, paddingTop: 1 }} elevation={4}>
-				<PageHeader shrink>Create Post</PageHeader>
+			<Paper className="main" style={{ padding: 20, paddingTop: 1, margin: "48px auto" }} elevation={4}>
+				<PageHeader>Create Post</PageHeader>
 
 				<Stack spacing={2}>
 					<TextField

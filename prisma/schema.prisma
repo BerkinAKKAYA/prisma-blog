@@ -12,6 +12,7 @@ datasource db {
 
 model Post {
   id         Int      @id @default(autoincrement())
+  authorName String
   authorMail String
   title      String
   content    String
