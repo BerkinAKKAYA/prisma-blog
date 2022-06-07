@@ -10,9 +10,10 @@ interface Props {
 
 export default function Post(props: { postInfo: PostType }) {
 	const user = useSession()?.data?.user || null;
-	const router = useRouter();
 
 	const canEdit = props.postInfo.authorMail === user?.email;
+
+	const wordsOfContent = props.postInfo.content.split(" ");
 
 	return (
 		<Card elevation={3}>
@@ -21,7 +22,10 @@ export default function Post(props: { postInfo: PostType }) {
 					{props.postInfo.title}
 				</Typography>
 				<Typography variant="body2" color="text.secondary">
-					{props.postInfo.content}
+					{
+						wordsOfContent.slice(0, 20).join(" ")
+						+ (wordsOfContent.length > 20 ? '...' : '')
+					}
 				</Typography>
 			</CardContent>
 			<CardActions>
