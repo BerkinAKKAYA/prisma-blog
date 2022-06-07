@@ -1,24 +1,22 @@
 import Head from 'next/head'
-import { styled } from '@mui/material/styles';
-import { PrismaClient, Post } from '@prisma/client'
+import { PrismaClient, Post as PostType } from '@prisma/client'
 import Header from '../components/Header';
 import { useSession } from 'next-auth/react';
+import Post from '@/components/Post';
+import { InferGetServerSidePropsType } from "next";
+import { Stack } from '@mui/material';
+import { Key } from 'react';
+import PageHeader from '@/components/PageHeader';
 
 const prisma = new PrismaClient();
 
-const Welcome = styled('p')(({ theme }) => ({
-  textAlign: "center",
-  fontSize: "1.6em",
-  margin: "48px 0",
-}));
-
 export async function getServerSideProps() {
-  const posts: Post[] = await prisma.post.findMany();
-  return { props: { posts } }
+  let posts: PostType[] = await prisma.post.findMany({ orderBy: { updatedAt: 'desc' } });
+  return { props: { posts: JSON.stringify(posts) } }
 }
 
-export default function Home(props: { posts: Post[] }) {
-  const { posts } = props;
+export default function Home(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  const posts = JSON.parse(props.posts);
   const user = useSession()?.data?.user || null;
 
   return (
@@ -30,20 +28,21 @@ export default function Home(props: { posts: Post[] }) {
 
       <Header />
 
-      {user ? <Welcome>{`Welcome back, ${user.name}!`}</Welcome> : ''}
+      {
+        user
+          ? <PageHeader>{`Welcome back, ${user.name}!`}</PageHeader>
+          : <PageHeader>Welcome to Prisma Blog!</PageHeader>
+      }
 
-      <div>
+      <Stack spacing={3} className="post-holder">
         {
           posts.length === 0
             ? <p style={{ textAlign: "center" }}>Nobody posted anything. Yet...</p>
-            : posts.map(post => (
-              <div key={post.id}>
-                <h2>{post.title}</h2>
-                <p>{post.content}</p>
-              </div>
+            : posts.map((post: PostType, i: Key) => (
+              <Post postInfo={post} key={i} />
             ))
         }
-      </div>
+      </Stack>
     </div>
   )
 }

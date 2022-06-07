@@ -1,18 +1,13 @@
-import * as React from 'react';
 import { styled, alpha } from '@mui/material/styles';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import InputBase from '@mui/material/InputBase';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import SearchIcon from '@mui/icons-material/Search';
-import { MoreVert, Logout, Login, TableRows, Create } from '@mui/icons-material';
+import { IconButton, Typography, InputBase, MenuItem, Menu } from '@mui/material';
+import { MoreVert, Logout, Login, Create, Search as SearchIcon, AccountCircle } from '@mui/icons-material';
 import { useSession, signIn, signOut } from "next-auth/react"
 import { useRouter } from 'next/router';
 import { Tooltip } from '@mui/material';
+import { useState } from 'react';
 
 const Search = styled('div')(({ theme }) => ({
 	position: 'relative',
@@ -49,14 +44,14 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
-	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
+	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
 
 	const user = useSession()?.data?.user || null;
 	const router = useRouter();
 
 	const buttons = {
 		signedIn: [
-			{ icon: <TableRows />, text: "My Posts", onClick: () => router.push("/my-posts") },
+			{ icon: <AccountCircle />, text: "My Posts", onClick: () => router.push("/my-posts") },
 			{ icon: <Create />, text: "Create Post", onClick: () => router.push("/create-post") },
 			{ icon: <Logout />, text: "Sign Out", onClick: () => signOut() },
 		],

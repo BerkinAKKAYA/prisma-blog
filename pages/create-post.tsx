@@ -5,28 +5,22 @@ import { useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/router';
 
-export default function Home() {
+export default function Home(props) {
 	const { data } = useSession();
 	const { user } = data || {};
 	const [title, setTitle] = useState("");
 	const [content, setContent] = useState("");
 	const router = useRouter();
 
-	let pageContent = (
-		<form>
-			<input type="text" placeholder="Post Title..." onChange={e => setTitle(e.target.value)} required />
-			<textarea placeholder="Post Content..." onChange={e => setContent(e.target.value)} required />
-			<button type="button" onClick={SubmitForm}>Submit</button>
-		</form>
-	)
-
-	if (!user) {
-		pageContent = <p style={{ textAlign: "center" }}>Please sign in to create posts.</p>;
-	} else if (!user.email) {
-		pageContent = <p style={{ textAlign: "center" }}>Couldn't access your email, please sign in with another option.</p>;
-	}
-
 	async function SubmitForm() {
+		if (title.length < 5) {
+			alert("Title must be at least 5 characters long.");
+			return;
+		} else if (content.length < 20) {
+			alert("Content must be at least 20 characters long.");
+			return;
+		}
+
 		const formData: Prisma.PostCreateInput = {
 			authorMail: user?.email || "",
 			title,
@@ -58,7 +52,11 @@ export default function Home() {
 
 			<Header />
 
-			{pageContent}
+			<div>
+				<input type="text" placeholder="Post Title..." onChange={e => setTitle(e.target.value)} required />
+				<textarea placeholder="Post Content..." onChange={e => setContent(e.target.value)} required />
+				<button type="button" onClick={SubmitForm}>Submit</button>
+			</div>
 		</div>
 	)
 }

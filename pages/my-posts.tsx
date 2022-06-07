@@ -1,19 +1,24 @@
+import { PrismaClient, Post as PostType } from '@prisma/client'
+import { getSession, GetSessionParams, useSession } from 'next-auth/react';
+import { InferGetServerSidePropsType } from "next";
+import { Stack } from '@mui/material';
+import { Key } from 'react';
 import Head from 'next/head'
-import { PrismaClient, Post } from '@prisma/client'
 import Header from '../components/Header';
-import { getSession, useSession } from 'next-auth/react';
+import Post from '@/components/Post';
+import PageHeader from '@/components/PageHeader';
 
 const prisma = new PrismaClient();
 
-export async function getServerSideProps(ctx) {
+export async function getServerSideProps(ctx: GetSessionParams) {
 	const session = await getSession(ctx);
 	const authorMail = session?.user?.email || "";
-	const posts: Post[] = await prisma.post.findMany({ where: { authorMail } });
-	return { props: { posts } }
+	const posts: PostType[] = await prisma.post.findMany({ where: { authorMail }, orderBy: { updatedAt: 'desc' } });
+	return { props: { posts: JSON.stringify(posts) } }
 }
 
-export default function Home(props: { posts: Post[] }) {
-	const { posts } = props;
+export default function Home(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
+	const posts = JSON.parse(props.posts);
 
 	return (
 		<div>
@@ -24,18 +29,17 @@ export default function Home(props: { posts: Post[] }) {
 
 			<Header />
 
-			<div>
+			<PageHeader>My Posts</PageHeader>
+
+			<Stack spacing={3} className="post-holder">
 				{
 					posts.length === 0
-						? <p style={{ textAlign: "center" }}>No posts. Yet...</p>
-						: posts.map(post => (
-							<div key={post.id}>
-								<h2>{post.title}</h2>
-								<p>{post.content}</p>
-							</div>
+						? <p style={{ textAlign: "center" }}>Nobody posted anything. Yet...</p>
+						: posts.map((post: PostType, i: Key) => (
+							<Post postInfo={post} key={i} />
 						))
 				}
-			</div>
+			</Stack>
 		</div>
 	)
 }
