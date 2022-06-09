@@ -116,6 +116,12 @@ export default function Header() {
 		</Box > : <></>
 	)
 
+	function SearchOnSubmit(e: KeyboardEvent) {
+		if (e.key === 'Enter') {
+			router.push("/search?query=" + e.target.value);
+		}
+	}
+
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static">
@@ -134,9 +140,11 @@ export default function Header() {
 						<SearchIconWrapper>
 							<SearchIcon />
 						</SearchIconWrapper>
-						<StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
+						<StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} onKeyDown={SearchOnSubmit} />
 					</Search>
+
 					<Box sx={{ flexGrow: 1 }} />
+
 					{DesktopButtons}
 					{MobileButtons}
 				</Toolbar>

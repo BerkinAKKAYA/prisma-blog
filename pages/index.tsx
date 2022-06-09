@@ -38,8 +38,6 @@ export default function Home(props: InferGetServerSidePropsType<typeof getServer
   const router = useRouter();
   const page = router?.query?.page ? parseInt(router.query.page.toString()) : 1;
 
-  console.log(page);
-
   const OnPageChange = (value: number) => {
     router.push({ query: { page: value } })
   }

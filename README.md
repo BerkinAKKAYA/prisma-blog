@@ -8,7 +8,7 @@
 - [ ] Write Tests for Core Logical Components using RTL and Jest
 - [ ] Deploy on Railway
 - [x] Add Pagination
-- [ ] Add Global Post Search
+- [x] Add Global Post Search
 - [x] Add "Post Detail" Page
 - [x] Add "Edit Post" Page
 - [x] Add Global Layout
