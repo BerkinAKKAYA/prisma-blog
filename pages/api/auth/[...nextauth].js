@@ -6,6 +6,7 @@ const env = process.env;
 const is_dev = env.NODE_ENV === 'development';
 
 export default NextAuth({
+	secret: process.env.NEXTAUTH_SECRET,
 	providers: [
 		GithubProvider({
 			clientId: is_dev ? env.GITHUB_ID_LOCAL : env.GITHUB_ID_LIVE,
