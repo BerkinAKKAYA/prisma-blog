@@ -1,6 +1,7 @@
 # Blog Project with Next and Prisma using TDD
 
 ## TODO
+
 - [x] Create Next App with Jest
 - [x] Create Prisma DB with SQLite
 - [x] Implement Next Auth
@@ -15,3 +16,8 @@
 - [x] Add Auth Controls (Edit Post, My Posts, Create Post)
 - [x] Add Null Checks For Posts (Edit Post, Post Detail)
 - [x] Add Delete Button in 'Edit Post' page
+
+## NOTE
+
+If the app gives the error code 500, probably heroku rotated the DB Credentials. Run the command below and update the DATABASE_URL environment variable.
+`heroku config:get DATABASE_URL -a prisma-blog-berkin`
