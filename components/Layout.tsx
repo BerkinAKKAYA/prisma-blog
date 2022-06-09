@@ -2,7 +2,7 @@ import { useSession } from "next-auth/react";
 import Footer from "./Footer";
 import Header from "./Header";
 
-export default function ({ children }) {
+export default function (props: { children: any; }) {
 	const { status } = useSession();
 
 	if (status === 'loading') {
@@ -12,7 +12,7 @@ export default function ({ children }) {
 	return <>
 		<Header />
 
-		{children}
+		{props.children}
 
 		<Footer />
 	</>

@@ -44,7 +44,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function Header() {
-	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
+	const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null as (HTMLButtonElement | null));
 
 	const user = useSession()?.data?.user || null;
 	const router = useRouter();
@@ -116,9 +116,9 @@ export default function Header() {
 		</Box > : <></>
 	)
 
-	function SearchOnSubmit(e: KeyboardEvent) {
-		if (e.key === 'Enter') {
-			router.push("/search?query=" + e.target.value);
+	function SearchOnSubmit(event: React.KeyboardEvent): any {
+		if (event.key === 'Enter') {
+			router.push("/search?query=" + (event.target as HTMLInputElement).value);
 		}
 	}
 
