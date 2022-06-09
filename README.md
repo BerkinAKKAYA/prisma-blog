@@ -7,10 +7,11 @@
 - [x] Add "Create Blog Post" page
 - [ ] Write Tests for Core Logical Components using RTL and Jest
 - [ ] Deploy on Railway
-- [ ] Add Pagination To Home Page and "My Posts" Page
+- [x] Add Pagination
 - [ ] Add Global Post Search
-- [ ] Add "Post Detail" Page
-- [ ] Add "Edit Post" Page
+- [x] Add "Post Detail" Page
+- [x] Add "Edit Post" Page
+- [x] Add Global Layout
 - [ ] Add Auth Middlewares (Edit Post, My Posts, Create Post)
 - [ ] Add Null Checks For Posts (Edit Post, Post Detail)
 - [ ] Add Delete Button in 'Edit Post' page
