@@ -12,6 +12,6 @@
 - [x] Add "Post Detail" Page
 - [x] Add "Edit Post" Page
 - [x] Add Global Layout
-- [x] Add Auth Middlewares (Edit Post, My Posts, Create Post)
+- [x] Add Auth Controls (Edit Post, My Posts, Create Post)
 - [x] Add Null Checks For Posts (Edit Post, Post Detail)
 - [x] Add Delete Button in 'Edit Post' page
