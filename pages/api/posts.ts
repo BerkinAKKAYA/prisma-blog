@@ -19,5 +19,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		res.json(response);
 	}
 
+	if (req.method === 'DELETE') {
+		const data: { id: number } = JSON.parse(req.body);
+		const response = await prisma.post.delete({ where: { id: data.id } });
+		res.json(response);
+	}
+
 	return res.status(405).json({ message: 'Method Not Allowed' });
 }

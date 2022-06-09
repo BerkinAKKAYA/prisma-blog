@@ -1,4 +1,4 @@
-import { Check } from "@mui/icons-material";
+import { Check, Delete, DeleteForever } from "@mui/icons-material";
 import { Button, Stack, TextField } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -115,6 +115,20 @@ function PostForm(props: { type: string, post?: PostType }) {
 		}
 	}
 
+	const DeletePost = async () => {
+		if (!props || !props.post) {
+			console.log("post not found in props", props);
+			return;
+		}
+
+		const response = await fetch('/api/posts', { method: "DELETE", body: JSON.stringify({ id: props.post.id }) });
+
+		if (response.ok) {
+			alert("Post Deleted!");
+			router.push("/my-posts");
+		}
+	}
+
 	const OnInputChange = (event: ChangeEvent, inputType: InputType) => {
 		const val = (event?.target as HTMLInputElement)?.value || "";
 
@@ -161,9 +175,14 @@ function PostForm(props: { type: string, post?: PostType }) {
 						Publish
 					</Button>
 				) : (
-					<Button variant="contained" endIcon={<Check />} onClick={UpdateExistingPost} color="success">
-						Save
-					</Button>
+					<Stack direction="row" spacing={2} justifyContent="center">
+						<Button variant="contained" endIcon={<Delete />} onClick={DeletePost} color="error">
+							Delete
+						</Button>
+						<Button variant="contained" endIcon={<Check />} onClick={UpdateExistingPost} color="success">
+							Save
+						</Button>
+					</Stack>
 				)
 			}
 		</Stack>
