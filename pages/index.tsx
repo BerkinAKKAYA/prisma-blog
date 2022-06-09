@@ -73,9 +73,9 @@ export default function Home(props: InferGetServerSidePropsType<typeof getServer
         <Stack spacing={3} className="post-holder">
           {
             pageCount === 0 // if there is no pages...
-              ? <p style={{ textAlign: "center" }}>Nobody posted anything. Yet...</p>
+              ? <p className="text-center">Nobody posted anything. Yet...</p>
               : posts.length === 0 // if page is empty...
-                ? <p style={{ textAlign: "center" }}>This page does not exists...</p>
+                ? <p className="text-center">This page does not exists...</p>
                 : posts.map((post: PostType, i: Key) => <Post postInfo={post} key={i} />)
           }
         </Stack>
