@@ -6,7 +6,7 @@
 - [x] Implement Next Auth
 - [x] Add "Create Blog Post" page
 - [ ] Write Tests for Core Logical Components using RTL and Jest
-- [ ] Deploy on Railway
+- [ ] Deploy on Vercel
 - [x] Add Pagination
 - [x] Add Global Post Search
 - [x] Add "Post Detail" Page
