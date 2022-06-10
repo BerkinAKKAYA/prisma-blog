@@ -30,14 +30,19 @@ export default function (props: InferGetServerSidePropsType<typeof getServerSide
 	const post: (PostType | null) = props?.post ? JSON.parse(props.post) : null;
 	const { data: sessionData, status: authStatus } = useSession();
 	let content: JSX.Element | null = null;
+	let title: string | null = "";
 
 	if (!post) {
+		title = "Not Found";
 		content = <p className="text-center">Post does not exists...</p>
 	} else if (authStatus === "unauthenticated") {
+		title = "Unauthenticated";
 		content = <p className="text-center">You must be signed in to view this page...</p>
 	} else if (post?.authorMail !== sessionData?.user?.email) {
+		title = "Unauthenticated";
 		content = <p className="text-center">You must be author of this post to edit it...</p>
 	} else {
+		title = post.title.slice(0, 20) + (post.title.length > 20 ? "..." : "");
 		content = <>
 			<div style={{ textAlign: "center" }}>
 				<Link href={"/posts/" + post?.id}>
@@ -56,7 +61,7 @@ export default function (props: InferGetServerSidePropsType<typeof getServerSide
 	return (
 		<>
 			<Head>
-				<title>{post ? post.title.slice(0, 20) : 'Not Found'} | Edit | Prisma Blog</title>
+				<title>{title} | Edit | Prisma Blog</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 

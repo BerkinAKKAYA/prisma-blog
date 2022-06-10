@@ -16,7 +16,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 		}
 
 		const response = await prisma.post.findUnique({ where: { id } });
-		res.json(response);
+		return res.json(response);
 	}
 
 	return res.status(405).json({ message: 'Method Not Allowed' });
