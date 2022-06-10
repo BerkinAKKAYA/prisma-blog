@@ -1,6 +1,13 @@
-# Blog Project with Next and Prisma using TDD
+# Prisma Blog by Berkin AKKAYA
 
 [Live Here](https://prisma-blog-flame.vercel.app/)
+
+## Technologies Used
+
+* PostgreSQL on Heroku
+* Prisma as ORM
+* Next as Front-End Framework
+* [Material UI](mui.com) as UI Kit
 
 ## TODO
 
