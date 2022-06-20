@@ -27,8 +27,8 @@ export async function getServerSideProps(context: { query?: { page?: string, que
 
 	const where = {
 		OR: [
-			{ title: { contains: searchQuery, } },
-			{ content: { contains: searchQuery, } }
+			{ title: { contains: searchQuery, mode: 'insensitive' } },
+			{ content: { contains: searchQuery, mode: 'insensitive' } }
 		]
 	}
 
