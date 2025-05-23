@@ -1,7 +1,5 @@
 # Prisma Blog by Berkin AKKAYA
 
-[Live Here](https://prisma-blog-flame.vercel.app/)
-
 ## Technologies Used
 * PostgreSQL on Heroku
 * Prisma ORM
